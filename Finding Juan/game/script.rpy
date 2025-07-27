@@ -1,8 +1,11 @@
-﻿# https://www.youtube.com/watch?v=8Y98Nm2yYxQ&ab_channel=PerKGrok
-# https://www.youtube.com/watch?v=d2BhDSVfmDU&ab_channel=PerKGrok
+﻿# walking code: https://youtu.be/j9R97yKecF4
+    # https://lemmasoft.renai.us/forums/viewtopic.php?f=51&t=53333#p502719
 
+init python:
+    import math
 
 image semi stand = "FelipeWalk/felipe1.png"
+
 
 image semi walk:
     "FelipeWalk/felipe1.png"
@@ -13,33 +16,31 @@ image semi walk:
     0.3
     "FelipeWalk/felipe4.png"
     0.3
-    
     repeat
 
-define sX= 310
-define sY=335
+
+default sX= 310
+default sY=470
 default mX=0
+default mY=0
 default dist=0
 default standWalk=0
-default rX= -1000
 
 screen checkMouse():
     if standWalk==0:
         key "mousedown_1" action Jump("checkDist")
 
 
-# The game starts here.
 label start:
-    scene bg town:
-        xpos rX
+    scene bg town
     show screen checkMouse
 
 label standRight:
     $ standWalk=0
 
     show semi stand:
-        xpos sX
-        ypos sY
+        xpos sX-37
+        ypos sY-150
         xzoom 1.0
 
     $ renpy.pause(hard=True)
@@ -48,54 +49,62 @@ label standLeft:
     $ standWalk=0
 
     show semi stand:
-        xpos sX
-        ypos sY
+        xpos sX-37
+        ypos sY-150
         xzoom -1.0
 
     $ renpy.pause(hard=True)
 
 label walkRight:
     $ standWalk=1
-    scene bg town:
-        xpos rX
-        linear dist/200.0 xpos rX-dist
 
     show semi walk:
-        xpos sX
-        ypos sY
+        xpos sX-37
+        ypos sY-150
         xzoom 1.0
+        linear dist/100.0 xpos mX-37 ypos mY-150
 
-    $ renpy.pause(delay=dist/200.0, hard=True)
-    $ rX -= dist
+    $ renpy.pause(delay=dist/100.0, hard=True)
+    $ sX=mX
+    $ sY=mY
     jump standRight
 
 label walkLeft:
     $ standWalk=1
 
-    scene bg town:
-        xpos rX
-        linear dist/200.0 xpos rX+dist
-
     show semi walk:
-        xpos sX
-        ypos sY
+        xpos sX-37
+        ypos sY-150
         xzoom -1.0
+        linear dist/100.0 xpos mX-37 ypos mY-150
 
-    $ renpy.pause(delay=dist/200.0, hard=True)
-    $ rX += dist
+    $ renpy.pause(delay=dist/100.0, hard=True)
+    $ sX=mX
+    $ sY=mY
     jump standLeft
 
 label checkDist:
-    $ mX=renpy.get_mouse_pos()[0]
+    python:
+        mX=renpy.get_mouse_pos()[0]
+        mY=renpy.get_mouse_pos()[1]
 
-    if mX>320:
-        $ dist = mX-320
-        if rX-dist<-4067:
-            $ dist= 4067 + rX
+        if mY<118:
+            mY=118
+
+        if mX<164:
+            mX=164
+
+        elif mX>2080:
+            mX=2080
+
+        xD = sX-mX
+        yD = sY-mY
+        dist = (xD**2)+(yD**2)
+        dist= math.sqrt(dist)
+
+
+    if mX>sX:
         jump walkRight
 
     else:
-        $ dist = 320-mX
-        if rX+dist>-351:
-            $ dist= -(351 + rX)
         jump walkLeft
