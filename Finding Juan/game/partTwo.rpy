@@ -23,11 +23,12 @@ label pizza2:
 
     scene apt bg
     stop music
+    with fade
 
     felipe "Juan! I’m back with the pizza!"
 
     show buan
-    with fade
+    with dissolve
     play music "529008__danjfilms__short-pizzicato-song.wav"
 
     "Juan appears..."
@@ -86,7 +87,8 @@ label pizza2:
 
     buan "You’ll never find him…"
 
-    "Felipe thinks to himself (I must get to the bottom of this, if it’s the last thing I do!)"
+    "Felipe thinks to himself..." 
+    "I must get to the bottom of this, if it’s the last thing I do!"
 
     "Felipe glances at the coupon and notices something. The bottom of the coupon had two numbers written upside down, 8 and 5."
 
@@ -96,13 +98,16 @@ label pizza2:
 
     buan "uh, no?"
 
+    show dim
     menu:
         "Threat":
+            hide dim
             felipe "If you don’t tell me right now I’m gonna beat you to a pulp!"
             buan "Okay, okay! It’s half of a secret password! But I ain’t tellin you the other half!"
             jump info
 
         "Bargain":
+            hide dim
             felipe "if you tell me I’ll give you five goober dollars…"
             buan "It’s half a secret password! But I don’t know the other half I swear! Please give me the goober dollars, I want icecream!"
             jump info
@@ -111,3 +116,4 @@ label info:
     "With the information gathered, Felipe decides to go outside and look for more clues. Leaving Buan tied up in the apartment."
 
     jump findHim
+    with fade

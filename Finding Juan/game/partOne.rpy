@@ -137,6 +137,8 @@ define buan = Character("Buan", color = "#b7b088" )
 define b = Character("Juan?", color = "#b7b088" )
 define c = Character("Cashier")
 
+define z = Character("Juan & Felipe")
+
 define unk = Character("???")
 
 ### Dog button ###
