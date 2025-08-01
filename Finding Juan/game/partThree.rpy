@@ -5,6 +5,7 @@ label findHim:
     show screen dogTalk2
     show screen pizzaTalk3
     show screen aptTalk2
+    play music "789664__madgravitystudio__shady.wav"
 
 ##################
 ### Game Start ###

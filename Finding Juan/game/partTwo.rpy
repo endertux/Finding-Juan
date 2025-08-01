@@ -1,4 +1,5 @@
 label pizza2:
+    play music "651533__code_box__airport-lounge.wav"
     scene pizza_place
     felipe " Hey uh, I ordered this pizza with no vegetables… and there’s vegetables."
 
@@ -21,11 +22,13 @@ label pizza2:
     "Felipe leaves the pizza place and returns to the apartment."
 
     scene apt bg
+    stop music
 
     felipe "Juan! I’m back with the pizza!"
 
     show buan
     with fade
+    play music "529008__danjfilms__short-pizzicato-song.wav"
 
     "Juan appears..."
 

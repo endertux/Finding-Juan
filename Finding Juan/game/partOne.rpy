@@ -42,6 +42,8 @@ label start:
     show screen pizzaTalk1
     show screen aptTalk1
 
+    play music "587437__clameria__chinese-loop2.mp3"
+
 label standRight:
     $ standWalk=0
 
@@ -200,6 +202,7 @@ label theStart:
 
     show apt bg
     with dissolve
+    play music "650939__beetlemuse__numskull.wav"
     "Felipe and Juan are chilling in their apartment,"
 
     "Suddenly, Juan’s stomach rumbles."
@@ -229,6 +232,7 @@ label theStart:
     hide juan
     hide felipe
 
+    play sound "371782__iamgiorgio__g6_doorbell.mp3"
     centered "20 minutes later the doorbell rings, it’s the pizza guy."
     centered "Felipe pays the pizza guy and closes the door."
 
